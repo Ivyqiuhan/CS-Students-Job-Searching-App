@@ -1,11 +1,18 @@
 package com.group.CSStudentJobSearchApp.model;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class User {
     private final UUID id;
     private final String email;
-    private UserProfile userProfile;
+    private Date lastLogin;
+
+    public User(UUID id, String email, Date lastLogin) {
+        this.id = id;
+        this.email = email;
+        this.lastLogin = lastLogin;
+    }
 
     public User(UUID id, String email) {
         this.id = id;
@@ -20,12 +27,8 @@ public class User {
         return email;
     }
 
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
-
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
+    public Date getLastLogin() {
+        return lastLogin;
     }
 }
 

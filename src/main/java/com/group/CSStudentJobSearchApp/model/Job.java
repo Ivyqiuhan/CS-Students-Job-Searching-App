@@ -3,29 +3,40 @@ package com.group.CSStudentJobSearchApp.model;
 import java.util.UUID;
 
 public class Job {
+    private final String source;
+    private final String sourceID;
     private final UUID jobKey;
     private final String postDescription;
     private final String jobTitle;
-    private final String compnay;
-    private final String city;
-    private final String state;
-    private final String country;
+    private final String company;
+    private final Location location;
     private final Skill[] skills;
     private final String url;
     private final boolean isExpired;
 
-    public Job(UUID jobKey, String postDescription, String jobTitle, String compnay, String city, String state,
-               String country, Skill[] skills, String url, boolean isExpired) {
+    public Job(String source, String sourceID, UUID jobKey, String postDescription, String jobTitle, String company, Location location, Skill[] skills, String url, boolean isExpired) {
+        this.source = source;
+        this.sourceID = sourceID;
         this.jobKey = jobKey;
         this.postDescription = postDescription;
         this.jobTitle = jobTitle;
-        this.compnay = compnay;
-        this.city = city;
-        this.state = state;
-        this.country = country;
+        this.company = company;
+        this.location = location;
         this.skills = skills;
         this.url = url;
         this.isExpired = isExpired;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public String getSourceID() {
+        return sourceID;
+    }
+
+    public Location getLocation() {
+        return location;
     }
 
     public UUID getJobKey() {
@@ -40,20 +51,8 @@ public class Job {
         return jobTitle;
     }
 
-    public String getCompnay() {
-        return compnay;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public String getCountry() {
-        return country;
+    public String getCompany() {
+        return company;
     }
 
     public Skill[] getSkills() {

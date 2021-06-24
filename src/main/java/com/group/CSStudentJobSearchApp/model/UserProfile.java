@@ -5,16 +5,14 @@ import java.util.Date;
 public class UserProfile {
     private String password;
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
     private String location;
-    private Date lastLogin;
 
-    public UserProfile(String password, String name, int phoneNumber, String location, Date lastLogin) {
+    public UserProfile(String password, String name, String phoneNumber, String location) {
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.location = location;
-        this.lastLogin = lastLogin;
     }
 
     public String getPassword() {
@@ -33,11 +31,11 @@ public class UserProfile {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -47,13 +45,5 @@ public class UserProfile {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
     }
 }
