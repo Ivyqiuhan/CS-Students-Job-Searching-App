@@ -7,7 +7,26 @@ function Dropdown ({ title, items = [], multiSelect = false }) {
     const toggle = () => setOpen(!open);
 
     function handleOnClick(item) {
+        if(!selection.some(current => current.id === item.id)) {
+            if (!multiSelect) {
+                setSelection([item]);
+            } else if (multiSelect) {
+                setSelection([...selection, item]);
+            }
+        } else {
+            let selectionAfterRemoval = selection;
+            selectionAfterRemoval = selectionAfterRemoval.filter(
+                current => current.id !== item.id
+            );
+            setSelection([...selectionAfterRemoval]);
+        }
+    }
 
+    function isItemInSelection(item) {
+        if (selection.find(current => current.id === item.id)) {
+            return true;
+        }
+        return false;
     }
 
     return (
@@ -37,7 +56,7 @@ function Dropdown ({ title, items = [], multiSelect = false }) {
                                     {item.value}
                                 </span>
                                 <span>
-                                    Selected...
+                                    {isItemInSelection(item) && 'Selected'}
                                 </span>
                             </button>
                         </li>
