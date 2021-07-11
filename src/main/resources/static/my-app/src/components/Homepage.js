@@ -1,13 +1,13 @@
 import "./Homepage.css";
 import React from "react";
-import Queries from './queries/Queries';
+import AnonymousSearch from './queries/AnonymousSearch';
 
 const Home = () => {
   return (
     <div className="Homepage">
       Hello World
 
-      <Queries />
+      <AnonymousSearch />
       
     </div>
   );
