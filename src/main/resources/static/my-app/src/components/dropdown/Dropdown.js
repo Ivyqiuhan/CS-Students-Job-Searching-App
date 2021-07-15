@@ -1,24 +1,27 @@
 import React, { useState } from 'react'
 import "./Dropdown.css";
 
-function Dropdown ({ title, items = [], multiSelect = false }) {
+//function Dropdown ({ title, items = [], multiSelect = false }) {
+function Dropdown (props) {
     const [open, setOpen] = useState(false);
     const [selection, setSelection] = useState([]);
     const toggle = () => setOpen(!open);
 
     function handleOnClick(item) {
         if(!selection.some(current => current.id === item.id)) {
-            if (!multiSelect) {
+            if (!props.multiSelect) {
                 setSelection([item]);
-            } else if (multiSelect) {
+            } else if (props.multiSelect) {
                 setSelection([...selection, item]);
             }
+            props.changeValue(item);
         } else {
             let selectionAfterRemoval = selection;
             selectionAfterRemoval = selectionAfterRemoval.filter(
                 current => current.id !== item.id
             );
             setSelection([...selectionAfterRemoval]);
+            props.changeValue(selectionAfterRemoval);
         }
     }
 
@@ -36,7 +39,7 @@ function Dropdown ({ title, items = [], multiSelect = false }) {
 
                 <div className="dd-header__title">
                     <p className="dd-header__title--bold">
-                        {title}
+                        {props.title}
                     </p>
                 </div>
 
@@ -49,7 +52,7 @@ function Dropdown ({ title, items = [], multiSelect = false }) {
 
             {open && (
                 <ul className="dd-list">
-                    {items.map(item => (
+                    {props.items.map(item => (
                         <li className="dd-list-item" key={item.id}>
                             <button class="button" onClick={() => handleOnClick(item)}>
                                 <span>
@@ -66,5 +69,7 @@ function Dropdown ({ title, items = [], multiSelect = false }) {
         </div>
     );
 }
+
+
 
 export default Dropdown;
