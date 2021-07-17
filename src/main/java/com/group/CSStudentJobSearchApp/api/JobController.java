@@ -5,9 +5,7 @@ import com.group.CSStudentJobSearchApp.model.Location;
 import com.group.CSStudentJobSearchApp.model.Skill;
 import com.group.CSStudentJobSearchApp.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,5 +24,10 @@ public class JobController {
     @GetMapping
     public List<Job> getJobs() {
         return jobService.getJobs();
+    }
+
+    @PostMapping
+    public void addNewJob(@RequestBody Job job) {
+        jobService.addNewJob(job);
     }
 }

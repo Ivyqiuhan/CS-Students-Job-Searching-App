@@ -15,9 +15,6 @@ public class JobConfig {
     @Bean
     CommandLineRunner commandLineRunner(JobRepository jobRepository) {
         return args -> {
-            // source:
-            // https://opensource.indeedeng.io/api-documentation/docs/job-search/
-//        return List.of(
             Job javaJob = new Job(
                     (long) 1,
                     "indeed",

@@ -25,10 +25,12 @@ public class Job {
     private String postDescription;
     private String jobTitle;
     private String company;
-    //    private Location location;
-    //    private Skill[] skills;
     private String url;
     private boolean isExpired;
+    @Transient
+    private Location location;
+    @Transient
+    private Skill[] skills;
 
     public Job() {
     }

@@ -22,4 +22,9 @@ public class JobService {
     public List<Job> getJobs() {
         return jobRepository.findAll();
     }
+
+    public void addNewJob(Job job) {
+        System.out.println("post is working");
+        System.out.println(job);
+    }
 }
