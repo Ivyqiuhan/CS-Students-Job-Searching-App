@@ -1,16 +1,32 @@
 package com.group.CSStudentJobSearchApp.model;
 
+import jdk.jfr.Enabled;
+
+import javax.persistence.*;
+import java.util.Arrays;
 import java.util.UUID;
 
+@Entity
+@Table
 public class Job {
+    @Id
+    @SequenceGenerator(
+            name = "job_sequence",
+            sequenceName = "job_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "job_sequence"
+    )
+    private long jobKey;
     private String source;
     private String sourceID;
-    private UUID jobKey;
     private String postDescription;
     private String jobTitle;
     private String company;
-    private Location location;
-    private Skill[] skills;
+    //    private Location location;
+    //    private Skill[] skills;
     private String url;
     private boolean isExpired;
 
@@ -18,25 +34,26 @@ public class Job {
     }
 
     // comment fields
-    public Job(String source, String sourceID, String jobTitle, String company, Location location, String url) {
+    public Job(Long jobKey, String source, String sourceID, String jobTitle, String company, String url) {
+        this.jobKey = jobKey;
         this.source = source;
         this.sourceID = sourceID;
         this.jobTitle = jobTitle;
         this.company = company;
-        this.location = location;
+//        this.location = location;
         this.url = url;
     }
 
     // From Indeed
-    public Job(String source, String sourceID, UUID jobKey, String postDescription, String jobTitle, String company, Location location, Skill[] skills, String url, boolean isExpired) {
+    public Job(Long jobKey, String source, String sourceID, String postDescription, String jobTitle, String company, String url, boolean isExpired) {
         this.source = source;
         this.sourceID = sourceID;
         this.jobKey = jobKey;
         this.postDescription = postDescription;
         this.jobTitle = jobTitle;
         this.company = company;
-        this.location = location;
-        this.skills = skills;
+//        this.location = location;
+//        this.skills = skills;
         this.url = url;
         this.isExpired = isExpired;
     }
@@ -57,11 +74,11 @@ public class Job {
         this.sourceID = sourceID;
     }
 
-    public UUID getJobKey() {
+    public long getJobKey() {
         return jobKey;
     }
 
-    public void setJobKey(UUID jobKey) {
+    public void setJobKey(long jobKey) {
         this.jobKey = jobKey;
     }
 
@@ -89,21 +106,21 @@ public class Job {
         this.company = company;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Skill[] getSkills() {
-        return skills;
-    }
-
-    public void setSkills(Skill[] skills) {
-        this.skills = skills;
-    }
+//    public Location getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Location location) {
+//        this.location = location;
+//    }
+//
+//    public Skill[] getSkills() {
+//        return skills;
+//    }
+//
+//    public void setSkills(Skill[] skills) {
+//        this.skills = skills;
+//    }
 
     public String getUrl() {
         return url;
@@ -119,5 +136,19 @@ public class Job {
 
     public void setExpired(boolean expired) {
         isExpired = expired;
+    }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "jobKey=" + jobKey +
+                ", source='" + source + '\'' +
+                ", sourceID='" + sourceID + '\'' +
+                ", postDescription='" + postDescription + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", company='" + company + '\'' +
+                ", url='" + url + '\'' +
+                ", isExpired=" + isExpired +
+                '}';
     }
 }
