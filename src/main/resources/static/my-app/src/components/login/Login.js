@@ -1,12 +1,13 @@
 import React,  { Component } from "react";
 import { Link } from "react-router-dom";
+import "./Login.css";
 
 export default class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: "",
+            username: "",
             password: "",
             loginErrors: ""
         };
@@ -14,8 +15,9 @@ export default class Login extends Component {
 
     render() {
         return(
-            <div>
+            <div className="login-container">
                 <form>
+                <div className="form-container">
                     <label for="username"> Username: </label><br/>
                     <input
                         type="text"
@@ -27,12 +29,18 @@ export default class Login extends Component {
                         type="text"
                         name="password"
                     /><br/>
+                </div>
 
-                    <button type="login-button">Login</button> 
-                    
+                <div className="btn-container">
+                    <div className="register-btn-container">
+                        <Link to="/register" className="register-button">Register</Link>
+                        </div>
+
+                        <div className="login-btn-container">
+                            <button type="login-button" className="login-button">Login</button> 
+                        </div> 
+                    </div>
                 </form>
-
-                <Link to="/register" className="register-btn">Register</Link>
             </div>
         );
     }
