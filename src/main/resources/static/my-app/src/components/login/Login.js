@@ -13,6 +13,18 @@ export default class Login extends Component {
         };
     }
 
+    handleClick(event) {
+        //axios stuff i think....
+    }
+
+    handleUsername(e) {
+        this.setState({username: e.target.value});
+    }
+
+    handlePassword(e) {
+        this.setState({password: e.target.value})
+    }
+
     render() {
         return(
             <div className="login-container">
@@ -22,12 +34,14 @@ export default class Login extends Component {
                     <input
                         type="text"
                         name="username"
+                        onChange={this.handleUsername}
                     /><br/>
 
                     <label for="password"> Password: </label><br/>
                         <input
                         type="text"
                         name="password"
+                        onChange={this.handlePassword}
                     /><br/>
                 </div>
 
@@ -37,7 +51,7 @@ export default class Login extends Component {
                         </div>
 
                         <div className="login-btn-container">
-                            <button type="login-button" className="login-button">Login</button> 
+                            <button type="login-button" className="login-button" onClick={this.handleClick}>Login</button> 
                         </div> 
                     </div>
                 </form>

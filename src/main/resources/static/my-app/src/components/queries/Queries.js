@@ -40,6 +40,7 @@ const Queries = () => {
                     <Dropdown title="Experience" items={items}/> 
                 </div>
             </div>
+            
         </div>
 
         <div className="button-container">
