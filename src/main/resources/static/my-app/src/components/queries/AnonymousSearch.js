@@ -4,6 +4,18 @@ import axios from 'axios';
 import Dropdown from '../dropdown/Dropdown';
 
 //testing
+  const companyItems = [
+    {
+      id: 1,
+      value: 'netflix'
+    },
+    {
+      id: 2,
+      value: 'lever'
+    }
+  ]
+
+
   const countryItems = [
     {
       id: 1,
@@ -58,6 +70,7 @@ class AnonymousSearch extends React.Component {
       countryValue: '',
       positionValue: '',
       technologyValue: '',
+      companyValue: '',
     };
 
     this.onChangePosition = this.onChangePosition.bind(this);
@@ -84,18 +97,51 @@ class AnonymousSearch extends React.Component {
     }, () => {console.log('new state', this.state.technologyValue); });
   }
 
+  onChangeCompany = (newCompany) => {
+    this.setState({
+      companyValue : newCompany.value
+    }, () => {console.log('new company', this.state.companyValue); });
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     
-  // todo get IP address 
+  //  indeed attempt #1 
+  // axios.get('https://api.ipify.org?format=json')
+  //   .then(res => {
+  //     console.log(navigator.userAgent);
 
-  const url = "https://api.indeed.com/ads/apisearch?publisher=123412341234123&q=" + this.state.technologyValue + "+" + this.state.positionValue + "&l=&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=&co"+ this.state.countryValue + "=&chnl=&userip=" + "1.2.3.4" + "&useragent=" + navigator.userAgent + "&v=2";
+  //     // todo get user agent 
 
-  axios.post(url)
+  //     const url = "https://api.indeed.com/ads/apisearch?publisher=unknown&q=" + this.state.technologyValue + "+" + this.state.positionValue + "&l=&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=&co"+ this.state.countryValue + "=&chnl=&userip=" + res.data.ip + "&useragent=&useragent=Mozilla/%2F4.0%28Firefox%29&v=2";
+  //     axios.post(url)
+  //       .then(res => {
+  //         console.log(res);
+  //         console.log(res.data);
+  //       });
+  //   });
+
+// indeed attempt #2
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://indeed-indeed.p.rapidapi.com/apigetjobs',
+  //   params: {publisher: 'unknown', format: 'json', v: '2', jobkeys: this.state.technologyValue + ', ' + this.state.countryValue + ', ' + this.state.positionValue},
+  //   headers: {'x-rapidapi-host': 'indeed-indeed.p.rapidapi.com'}
+  // };
+
+  // axios.request(options).then(function (response) {
+  //   console.log(response.data);
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
+
+// lever attempt
+  axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=25&mode=json')
     .then(res => {
-      console.log(res);
+      console.log("line 161");
       console.log(res.data);
     });
+
 }
 
 
@@ -124,6 +170,15 @@ render() {
                     title="Experience" 
                     items={technologyItems} 
                     changeValue={this.onChangeTechnology}/> 
+                </div>
+            </div>
+
+            <div className="dd-container">
+                <div className="container">
+                    <Dropdown 
+                    title="Company" 
+                    items={companyItems} 
+                    changeValue={this.onChangeCompany}/> 
                 </div>
             </div>
         </div>
