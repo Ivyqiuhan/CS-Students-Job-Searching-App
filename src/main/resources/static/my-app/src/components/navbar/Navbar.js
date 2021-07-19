@@ -12,8 +12,8 @@ class Navbar extends Component {
                     <h1 className="navbar-home"><NavLink to="/">NAME</NavLink></h1>
                     
                     <div className="navbar-account-items">
-                        <NavLink to="/profile"><img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/></NavLink>
-                        <h1 className="navbar-account"><NavLink to="/profile">ACCOUNT</NavLink></h1>
+                        <NavLink to="/login"><img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/></NavLink>
+                        <h1 className="navbar-account"><NavLink to="/login">ACCOUNT</NavLink></h1>
                     </div>
                     
             

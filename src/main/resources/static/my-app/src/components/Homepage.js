@@ -5,8 +5,6 @@ import Queries from './queries/Queries';
 const Home = () => {
   return (
     <div className="Homepage">
-      Hello World
-
       <Queries />
       
     </div>
