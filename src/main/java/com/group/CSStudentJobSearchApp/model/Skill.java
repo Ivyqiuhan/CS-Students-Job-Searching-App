@@ -7,6 +7,7 @@ public class Skill {
     private final String name;
     private final String description;
 
+
     public Skill(UUID skillID, String name, String description) {
         this.skillID = skillID;
         this.name = name;
