@@ -140,7 +140,7 @@ class AnonymousSearch extends React.Component {
     .then(res => {
       console.log("line 161");
       console.log(res.data);
-      axios.post('http://localhost:8000/jobs', res.data)
+      axios.post('http://localhost:8080/jobs', res.data)
           .then(res => {
               console.log(res);
           }).catch(err => {
