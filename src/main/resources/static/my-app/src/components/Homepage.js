@@ -5,8 +5,6 @@ import AnonymousSearch from './queries/AnonymousSearch';
 const Home = () => {
   return (
     <div className="Homepage">
-      Hello World
-
       <AnonymousSearch />
       
     </div>

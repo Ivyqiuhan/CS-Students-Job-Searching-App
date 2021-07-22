@@ -45,7 +45,13 @@ function Dropdown (props) {
 
                 <div className="dd-header__action">
                     <p>
-                        {open ? 'Close' : 'Open'}
+                        {open ? <div className="dd-icon"> 
+                            <img src="https://img.icons8.com/material-outlined/24/000000/collapse-arrow.png"/>
+                            </div>
+                            : <div className="dd-icon">
+                                <img src="https://img.icons8.com/material-outlined/50/000000/expand-arrow--v1.png"/>
+                            </div>}
+                                
                     </p>
                 </div>
             </div>
@@ -59,7 +65,9 @@ function Dropdown (props) {
                                     {item.value}
                                 </span>
                                 <span>
-                                    {isItemInSelection(item) && 'Selected'}
+                                    {isItemInSelection(item) && <div className="dd-icon">
+                                            <img src="https://img.icons8.com/material-outlined/24/000000/checkmark--v1.png"/>
+                                        </div>}
                                 </span>
                             </button>
                         </li>
