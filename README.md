@@ -16,3 +16,10 @@
  - Frontend: React
  - Backend: Java, Spring Boot
  - Database: MySQL, AWS
+ 
+ ---
+ ## Design 
+ - Frontend
+ - Backend
+  ![Alt text](./img/backend.png?raw=true "Optional Title")
+ 
