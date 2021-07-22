@@ -1,46 +1,44 @@
 package com.group.CSStudentJobSearchApp.model;
 
 import java.util.Date;
-import java.util.UUID;
+import javax.persistence.*;
 
-public class User {
-    private final UUID id;
-    private final String email;
-    private String password;
+@Entity
+@Table
+public class UserAccount {
+    @Id
+    @SequenceGenerator(
+        name = "user_sequence",
+        sequenceName = "user_sequence",
+        allocationSize =1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "user_sequence"
+    )
+
+    private long userKey;
+    private String email;
     private String name;
     private String phoneNumber;
     private String location;
     private Date lastLogin;
 
-    public User(UUID id, String email, String password, String name, String phoneNumber, String location, Date lastLogin) {
-        this.id = id;
+    public UserAccount() {
+
+    }
+
+    public UserAccount(Long userKey, String email, String name, String phoneNumber, String location, Date lastLogin) {
+        this.userKey = userKey;
         this.email = email;
-        this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.lastLogin = lastLogin;
     }
 
-    public User(UUID id, String email) {
-        this.id = id;
-        this.email = email;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {
