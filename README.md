@@ -26,9 +26,15 @@
 ---
 ## COnnect to Database
 - [Install postgres](https://postgresapp.com/downloads.html)
+
 - Start Postgres
-    ![Alt text](./img/postgres.png "Optional Title")
+ ![Alt text](./img/postgres.png)
+   
 - Open Postgres Terminal
-    ![Alt text](./img/postgresTerminal.png "Optional Title")
-- Type: `CREATE DATABASE jobs;`
-    ![Alt text](./img/postgresTerminal2.png "Optional Title")
+ 
+ ![Alt text](./img/postgresTerminal.png)
+   
+- Type:  `CREATE DATABASE jobs;`
+ 
+ ![Alt text](./img/postgresTerminal2.png)
+
