@@ -140,12 +140,12 @@ class AnonymousSearch extends React.Component {
     .then(res => {
       console.log("line 161");
       console.log(res.data);
-      axios.post('http://localhost:8080/jobs', res.data)
-          .then(res => {
-              console.log(res);
-          }).catch(err => {
-              console.log(err);
-      });
+      // axios.post('http://localhost:8080/jobs', res.data)
+      //     .then(res => {
+      //         console.log(res);
+      //     }).catch(err => {
+      //         console.log(err);
+      // });
     });
 
 }
@@ -154,7 +154,7 @@ class AnonymousSearch extends React.Component {
 render() {
     return (
     <div className="all-queries">
-        <div className="all-queries-container">
+        <div className="dd-container">
             <div className="container">
                 <Dropdown 
                   title="Country" 
