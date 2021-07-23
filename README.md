@@ -24,7 +24,7 @@
   ![Alt text](./img/backend.png?raw=true "Optional Title")
  
 ---
-## COnnect to Database
+## Connect to Database
 - [Install postgres](https://postgresapp.com/downloads.html)
 
 - Start Postgres
