@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class UserAccount {
+public class UserProfile {
     @Id
     @SequenceGenerator(
         name = "user_sequence",
@@ -24,11 +24,11 @@ public class UserAccount {
     private String location;
     private Date lastLogin;
 
-    public UserAccount() {
+    public UserProfile() {
 
     }
 
-    public UserAccount(Long userKey, String email, String name, String phoneNumber, String location, Date lastLogin) {
+    public UserProfile(Long userKey, String email, String name, String phoneNumber, String location, Date lastLogin) {
         this.userKey = userKey;
         this.email = email;
         this.name = name;

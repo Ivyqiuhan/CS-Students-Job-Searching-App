@@ -2,30 +2,30 @@ package com.group.CSStudentJobSearchApp.api;
 
 import java.util.List;
 
-import com.group.CSStudentJobSearchApp.model.UserAccount;
-import com.group.CSStudentJobSearchApp.service.UserAccountService;
+import com.group.CSStudentJobSearchApp.model.UserProfile;
+import com.group.CSStudentJobSearchApp.service.UserProfileService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/users")
-public class UserAccountController {
+public class UserProfileController {
 
-    private final UserAccountService userService;
+    private final UserProfileService userService;
 
     @Autowired
-    public UserAccountController(UserAccountService userService) {
+    public UserProfileController(UserProfileService userService) {
         this.userService = userService;
     }
 
     @GetMapping
-    public List<UserAccount> getUsers() {
+    public List<UserProfile> getUsers() {
         return userService.getUsers();
     }
 
     @PostMapping
-    public void addNewUser(@RequestBody UserAccount user) {
+    public void addNewUser(@RequestBody UserProfile user) {
         userService.addNewUser(user);
     }
 }

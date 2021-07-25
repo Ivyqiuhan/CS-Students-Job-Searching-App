@@ -2,20 +2,20 @@ package com.group.CSStudentJobSearchApp.config;
 
 import java.util.List;
 
-import com.group.CSStudentJobSearchApp.dao.UserAccountRepository;
-import com.group.CSStudentJobSearchApp.model.UserAccount;
+import com.group.CSStudentJobSearchApp.dao.UserProfileRepository;
+import com.group.CSStudentJobSearchApp.model.UserProfile;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class UserAccountConfig {
+public class UserProfileConfig {
     
     @Bean
-    CommandLineRunner commandLineRunnerForUserAccounts(UserAccountRepository userAccountRepository) {
+    CommandLineRunner commandLineRunnerForUserAccounts(UserProfileRepository userAccountRepository) {
         return args -> {
-            UserAccount userOne = new UserAccount(
+            UserProfile userOne = new UserProfile(
                 (long) 1,
                 "user_one@example.com",
                 "User One",
@@ -24,7 +24,7 @@ public class UserAccountConfig {
                 null
             );
 
-            UserAccount userTwo = new UserAccount(
+            UserProfile userTwo = new UserProfile(
                 (long) 2,
                 "user_two@example.com",
                 "User Two",
@@ -33,7 +33,7 @@ public class UserAccountConfig {
                 null
             );
 
-            UserAccount userThree = new UserAccount(
+            UserProfile userThree = new UserProfile(
                 (long) 3,
                 "user_three@example.com",
                 "User Three",
