@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/users")
 public class UserProfileController {
 
-    private final UserProfileService userService;
+    private final UserProfileService userProfileService;
 
     @Autowired
-    public UserProfileController(UserProfileService userService) {
-        this.userService = userService;
+    public UserProfileController(UserProfileService userProfileService) {
+        this.userProfileService = userProfileService;
     }
 
     @GetMapping
     public List<UserProfile> getUsers() {
-        return userService.getUsers();
+        return userProfileService.getUsers();
     }
 
     @PostMapping
     public void addNewUser(@RequestBody UserProfile user) {
-        userService.addNewUser(user);
+        userProfileService.addNewUser(user);
     }
 }
