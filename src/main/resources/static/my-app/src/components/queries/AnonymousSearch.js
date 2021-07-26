@@ -104,6 +104,24 @@ class AnonymousSearch extends React.Component {
     }, () => {console.log('new company', this.state.companyValue); });
   }
 
+    makeLeverRequest = (jobArray) => {
+        for (let job of jobArray) {
+            let data = {
+                source: 'lever',
+                sourceID: null,
+                postDescription: job.additionalPlain,
+                jobTitle: job.text,
+                company: this.state.companyValue,
+                url: job.applyUrl,
+                expired: null
+            }
+            axios.post('http://localhost:8080/jobs', data)
+                .catch(err => {
+                console.log(err);
+            });
+        }
+    }
+
   handleSubmit = event => {
     event.preventDefault();
     
@@ -111,9 +129,6 @@ class AnonymousSearch extends React.Component {
   // axios.get('https://api.ipify.org?format=json')
   //   .then(res => {
   //     console.log(navigator.userAgent);
-
-  //     // todo get user agent 
-
   //     const url = "https://api.indeed.com/ads/apisearch?publisher=unknown&q=" + this.state.technologyValue + "+" + this.state.positionValue + "&l=&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=&co"+ this.state.countryValue + "=&chnl=&userip=" + res.data.ip + "&useragent=&useragent=Mozilla/%2F4.0%28Firefox%29&v=2";
   //     axios.post(url)
   //       .then(res => {
@@ -129,7 +144,6 @@ class AnonymousSearch extends React.Component {
   //   params: {publisher: 'unknown', format: 'json', v: '2', jobkeys: this.state.technologyValue + ', ' + this.state.countryValue + ', ' + this.state.positionValue},
   //   headers: {'x-rapidapi-host': 'indeed-indeed.p.rapidapi.com'}
   // };
-
   // axios.request(options).then(function (response) {
   //   console.log(response.data);
   // }).catch(function (error) {
@@ -137,19 +151,11 @@ class AnonymousSearch extends React.Component {
   // });
 
 // lever attempt
-  // https://spring.io/guides/gs/rest-service-cors/ todo
   axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=25&mode=json')
     .then(res => {
-      console.log("line 161");
-        console.log(res);
-        axios.post('http://localhost:8080/jobs', res.data)
-            .then(res => {
-                console.log(res);
-            }).catch(err => {
-            console.log(err);
-        });
+      console.log(res.data);
+        this.makeLeverRequest(res.data);
     });
-
 }
 
 
