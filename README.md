@@ -24,6 +24,20 @@
  - Backend
   ![Alt text](./img/backend.png?raw=true "Optional Title")
  
+---
+## Connect to Database
+- [Install postgres](https://postgresapp.com/downloads.html)
+
+- Start Postgres
+ ![Alt text](./img/postgres.png)
+   
+- Open Postgres Terminal
+ 
+ ![Alt text](./img/postgresTerminal.png)
+   
+- Type:  `CREATE DATABASE jobs;`
+ 
+ ![Alt text](./img/postgresTerminal2.png)
 
 
  ---
