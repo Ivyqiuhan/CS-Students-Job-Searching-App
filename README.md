@@ -1,4 +1,11 @@
 # CS-Students-Job-Searching-App
+---
+## Demo
+ - Display the jobs
+  ![Alt text](./img/dispaly.png)
+ - Search for jobs
+  ![Alt text](./img/search.png)
+ 
 
 ## Who we are
  - Frontend: Andrea Chan, Sherry Shi
@@ -15,9 +22,8 @@
  ## Tech Stack
  - Frontend: React
  - Backend: Java, Spring Boot
- - Database: MySQL, AWS
+ - Database: PostgreSQL, AWS
 
- 
  ---
  ## Design 
  - Frontend
