@@ -17,6 +17,15 @@
  - Backend: Java, Spring Boot
  - Database: MySQL, AWS
 
+ 
+ ---
+ ## Design 
+ - Frontend
+ - Backend
+  ![Alt text](./img/backend.png?raw=true "Optional Title")
+ 
+
+
  ---
  ## UI Concepts
  `
@@ -34,3 +43,4 @@
  Homepage (Logged-in)             |  Homepage (Post query)
  :-------------------------:|:-------------------------:
  <img src="https://user-images.githubusercontent.com/69441734/122992981-9a59e780-d35b-11eb-8522-a484e7620af0.png" width="450">  |  <img  src="https://user-images.githubusercontent.com/69441734/122992995-9f1e9b80-d35b-11eb-9109-5f7ef20eb154.png" width="450">
+
