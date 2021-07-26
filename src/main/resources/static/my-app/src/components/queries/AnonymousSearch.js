@@ -4,6 +4,7 @@ import axios from 'axios';
 import Dropdown from '../dropdown/Dropdown';
 
 //testing
+
   const companyItems = [
     {
       id: 1,
@@ -136,16 +137,17 @@ class AnonymousSearch extends React.Component {
   // });
 
 // lever attempt
+  // https://spring.io/guides/gs/rest-service-cors/ todo
   axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=25&mode=json')
     .then(res => {
       console.log("line 161");
       console.log(res.data);
-      // axios.post('http://localhost:8080/jobs', res.data)
-      //     .then(res => {
-      //         console.log(res);
-      //     }).catch(err => {
-      //         console.log(err);
-      // });
+      axios.post('http://localhost:8080/jobs', res.data)
+          .then(res => {
+              console.log(res);
+          }).catch(err => {
+              console.log(err);
+      });
     });
 
 }
