@@ -8,17 +8,19 @@ export default function Jobs() {
 
     const url = 'http://localhost:8080/jobs';
 
+    useEffect(() => {
+        axios.get(url)
+            .then((response) => {
+                console.log('This is your data', response);
+                const allJobs = response.data;
+                getJobs(allJobs);
+            })
+            .catch(error => console.error('Getting jobs error'));
 
-    axios.get(url)
-        .then((response) => {
-            console.log('This is your data', response);
-            const allJobs = response.data;
-            getJobs(allJobs);
-        })
-        .catch(error => console.error('Getting jobs error'));
-    
+    }, [])
+
 
     return (
-        <Job jobs={jobs} />
+        <Job jobs={jobs}/>
     )
 }

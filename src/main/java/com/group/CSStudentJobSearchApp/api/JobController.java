@@ -21,6 +21,7 @@ public class JobController {
         this.jobService = jobService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<Job> getJobs() {
         return jobService.getJobs();
