@@ -44,6 +44,26 @@
 - Type:  `CREATE DATABASE jobs;`
  
  ![Alt text](./img/postgresTerminal2.png)
+ 
+ ---
+ ## Run the Application
+ - Make sure that Postgres is running with Jobs database.
+ 
+ - Run backend:
+ 
+ --- `mvn clean install` (optional)
+  
+ ---  `cd CS-Students-Job-Searching-App/src/main/java/com/group/CSStudentJobSearchApp`
+  
+ --- Open and run file `CsStudentJobSearchAppApplication.java`
+  
+- Run frontend: 
+ 
+ --- `cd CS-Students-Job-Searching-App/src/main/resources/static/my-app/src`
+  
+ --- `npm install`
+  
+ ---  `npm start`
 
 
  ---
