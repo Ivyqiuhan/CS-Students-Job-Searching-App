@@ -24,6 +24,9 @@ public class UserProfile {
     private String phoneNumber;
     private String location;
 
+    @OneToOne(mappedBy = "userProfile")
+    private UserCredential userCredential;
+
     public UserProfile() {
 
     }
