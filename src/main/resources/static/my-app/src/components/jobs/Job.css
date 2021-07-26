@@ -1,0 +1,39 @@
+.jobs-header {
+    margin-left: 32.5%;
+    margin-top: 30px;
+    font-family: 'Sen', sans-serif;
+    font-size: 250%;
+}
+
+.jobs-container {
+    margin-left: 15%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.jobs {
+    margin-top: 5%;
+    width: 50%;
+    border: 3px solid rgb(20, 20, 20);
+    padding: 1.5%;
+}
+
+.job-title {
+    font-weight: bold;
+}
+
+.job-company {
+    font-size: 80%;
+}
+
+.job-description {
+    font-family: 'Sen', sans-serif;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.job-source {
+    font-size: 80%;
+}
