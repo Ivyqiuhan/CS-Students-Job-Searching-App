@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path = "/jobs")
 public class JobController {
 
@@ -22,7 +23,7 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    //    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<Job> getJobs() {
         return jobService.getJobs();

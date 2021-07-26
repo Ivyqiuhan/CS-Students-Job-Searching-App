@@ -141,13 +141,13 @@ class AnonymousSearch extends React.Component {
   axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=25&mode=json')
     .then(res => {
       console.log("line 161");
-      console.log(res.data);
-      axios.post('http://localhost:8080/jobs', res.data)
-          .then(res => {
-              console.log(res);
-          }).catch(err => {
-              console.log(err);
-      });
+        console.log(res);
+        axios.post('http://localhost:8080/jobs', res.data)
+            .then(res => {
+                console.log(res);
+            }).catch(err => {
+            console.log(err);
+        });
     });
 
 }
