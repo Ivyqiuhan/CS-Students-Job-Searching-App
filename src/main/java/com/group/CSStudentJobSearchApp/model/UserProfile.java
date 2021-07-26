@@ -1,6 +1,5 @@
 package com.group.CSStudentJobSearchApp.model;
 
-import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -16,25 +15,25 @@ public class UserProfile {
         strategy = GenerationType.SEQUENCE,
         generator = "user_sequence"
     )
+    private Long id;
 
-    private long userKey;
+    @Column(unique=true)
     private String email;
+
     private String name;
     private String phoneNumber;
     private String location;
-    private Date lastLogin;
 
     public UserProfile() {
 
     }
 
-    public UserProfile(Long userKey, String email, String name, String phoneNumber, String location, Date lastLogin) {
-        this.userKey = userKey;
+    public UserProfile(Long userProfileKey, String email, String name, String phoneNumber, String location) {
+        this.id = userProfileKey;
         this.email = email;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.location = location;
-        this.lastLogin = lastLogin;
     }
 
     public String getEmail() {
@@ -63,14 +62,6 @@ public class UserProfile {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
     }
 }
 

@@ -15,34 +15,47 @@ public class UserProfileConfig {
     @Bean
     CommandLineRunner commandLineRunnerForUserAccounts(UserProfileRepository userAccountRepository) {
         return args -> {
-            UserProfile userOne = new UserProfile(
+            UserProfile johnGreen = new UserProfile(
                 (long) 1,
-                "user_one@example.com",
-                "User One",
-                "111-111-1111",
-                "canada",
-                null
+                "johngreen@example.com",
+                "John Green",
+                "1112223333",
+                "Vancouver"
             );
 
-            UserProfile userTwo = new UserProfile(
+            UserProfile harryPotter = new UserProfile(
                 (long) 2,
-                "user_two@example.com",
-                "User Two",
-                "111-111-1111",
-                "canada",
-                null
+                "harry_potter@example.com",
+                "Harry Potter",
+                "1231231234",
+                "Toronto"
             );
 
-            UserProfile userThree = new UserProfile(
+            UserProfile samSmith = new UserProfile(
                 (long) 3,
-                "user_three@example.com",
-                "User Three",
-                "111-111-1111",
-                "canada",
-                null
+                "sam@example.com",
+                "Sam Smith",
+                "1234567890",
+                "Vancouver"
             );
 
-            userAccountRepository.saveAll(List.of(userOne, userTwo, userThree));
+            UserProfile emmaWatson = new UserProfile(
+                (long) 4,
+                "emmawatson1@example.com",
+                "Emma Watson",
+                "9998887777",
+                "Ottawa"
+            );
+
+            UserProfile peterParker = new UserProfile(
+                (long) 5,
+                "peter@example.com",
+                "Peter Parker",
+                "9876543210",
+                "Toronto"
+            );
+
+            userAccountRepository.saveAll(List.of(johnGreen, harryPotter, samSmith, emmaWatson, peterParker));
         };
     }
 }
