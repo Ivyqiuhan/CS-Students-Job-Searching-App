@@ -7,7 +7,7 @@ export default function Job (props) {
 
         if (jobs.length > 0) {
             return(
-                <div>
+                <div className="all-jobs">
                 <div className="jobs-header"> Jobs </div>
 
                 <div className="jobs-container">
@@ -39,7 +39,7 @@ export default function Job (props) {
             </div>
             )} else {
                 return (
-                    <div>
+                    <div className="no-job-container">
                         No jobs
                     </div>
                 )

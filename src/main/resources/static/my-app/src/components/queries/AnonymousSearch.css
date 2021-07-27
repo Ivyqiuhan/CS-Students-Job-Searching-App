@@ -10,10 +10,9 @@
 }
 
 .all-queries {
-    float: right;
     margin-right: 20%;
     margin-top: 10%;
-    
+    float: right;
 }
 
 .dd-container {
@@ -48,4 +47,17 @@
 .button-container {
     margin-top: 10px;
     margin-left: 158px;
+}
+
+.search-text {
+    margin-top: 15%;
+    margin-left: 25%;
+    font-size: 40px;
+    font-weight: bold;
+    white-space: nowrap;
+    float: left;
+}
+
+.jobs-search {
+    float: left;
 }
