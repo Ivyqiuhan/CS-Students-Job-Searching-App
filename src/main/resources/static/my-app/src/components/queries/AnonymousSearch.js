@@ -110,7 +110,7 @@ class AnonymousSearch extends React.Component {
         )
             .then(res => {
                 console.log(res.data);
-                this.makeLeverRequest(res.data);
+                this.makeLeverAPIRequest(res.data);
             });
 
         this.setState({viewQueries: true});
