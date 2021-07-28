@@ -75,8 +75,7 @@ class RegisteredSearch extends React.Component {
             commitmentValue: '',
             viewQueries: false,
             companySelected: false,
-            allJobs: [],
-            filteredJobs: []
+            allJobs: []
         };
 
         this.onChangeLocation = this.onChangeLocation.bind(this);
@@ -88,6 +87,12 @@ class RegisteredSearch extends React.Component {
             companyValue: newCompany.value
         }, () => {
             console.log('new company', this.state.companyValue);
+        });
+
+        this.setState({
+            companySelected: true
+        }, () => {
+            console.log('new company', this.state.companySelected);
         });
     }
 
@@ -133,8 +138,6 @@ class RegisteredSearch extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        // old code not synchronous
-
         axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=50&mode=json&location=' +
             this.state.locationValue
         )
@@ -147,9 +150,9 @@ class RegisteredSearch extends React.Component {
                     .then((response) => {
                         this.setState({allJobs: response.data}, () => {
                             console.log('new jobs', this.state.allJobs);
-                        });
-                        this.setState({viewQueries: true}, () => {
-                            console.log('setting viewQueries as true', this.state.viewQueries); // todo set this as true only after the filtering is completed
+                            this.setState({viewQueries: true}, () => {
+                                console.log('setting viewQueries as true', this.state.viewQueries);
+                            });
                         });
                     }).catch(error => console.error('Getting jobs error'));
             });
@@ -159,7 +162,13 @@ class RegisteredSearch extends React.Component {
         return (
             <div className="anon-search-container">
                 {(this.state.viewQueries) ?
-                    <div className="jobs-search"><Jobs jobs = {this.state.allJobs}/></div> :
+                    <div className="jobs-search"><Jobs
+                                                    jobs = {this.state.allJobs}
+                                                    companyFilter = {this.state.companyValue}
+                                                    locationFilter = {this.state.locationValue}
+                                                    commitmentFilter = {this.state.commitmentValue}
+                                                />
+                    </div> :
                     <div className="search-text">Search for jobs</div>}
 
                 <div className="all-queries">

@@ -8,7 +8,8 @@ import Jobs from "../jobs/Jobs";
 
 const companyItems = [
     {id: 0, value: 'netflix'},
-    {id: 1, value: 'lever'}
+    {id: 1, value: 'lever'},
+   // {id: 2, value: 'Ciena'} // todo delete after testing filter
 ]
 
 const leverLocationItems = [
@@ -78,6 +79,12 @@ class AnonymousSearch extends React.Component {
         }, () => {
             console.log('new company', this.state.companyValue);
         });
+
+        this.setState({
+            companySelected: true
+        }, () => {
+            console.log('new company', this.state.companySelected);
+        });
     }
 
     makeLeverAPIRequest = (jobArray) => {
@@ -105,22 +112,37 @@ class AnonymousSearch extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=25&mode=json&location=' +
+
+        axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=50&mode=json&location=' +
             this.state.locationValue
         )
             .then(res => {
                 console.log(res.data);
                 this.makeLeverAPIRequest(res.data);
+            })
+            .then(() => {
+                axios.get('http://localhost:8080/jobs')
+                    .then((response) => {
+                        this.setState({allJobs: response.data}, () => {
+                            console.log('new jobs', this.state.allJobs);
+                            this.setState({viewQueries: true}, () => {
+                                console.log('setting viewQueries as true', this.state.viewQueries);
+                            });
+                        });
+                    }).catch(error => console.error('Getting jobs error'));
             });
-
-        this.setState({viewQueries: true});
     }
 
     render() {
         return (
             <div className="anon-search-container">
                 {(this.state.viewQueries) ?
-                    <div className="jobs-search"><Jobs/></div> :
+                    <div className="jobs-search"><Jobs
+                        jobs = {this.state.allJobs}
+                        companyFilter = {this.state.companyValue}
+                        locationFilter = {this.state.locationValue}
+                        commitmentFilter = ''
+                    /></div> :
                     <div className="search-text">Search for jobs</div>}
 
                 <div className="all-queries">

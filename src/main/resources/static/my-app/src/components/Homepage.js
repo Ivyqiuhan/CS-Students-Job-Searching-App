@@ -6,7 +6,7 @@ import AnonymousSearch from './queries/AnonymousSearch';
 const Home = () => {
   return (
     <div className="Homepage">
-      <RegisteredSearch />
+      <AnonymousSearch />
     </div>
   );
 }
