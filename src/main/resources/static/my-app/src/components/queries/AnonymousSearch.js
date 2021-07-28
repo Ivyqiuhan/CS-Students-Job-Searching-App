@@ -107,6 +107,7 @@ class AnonymousSearch extends React.Component {
     makeLeverRequest = (jobArray) => {
         for (let job of jobArray) {
             let data = {
+                jobKey: 0,
                 source: 'lever',
                 sourceID: null,
                 postDescription: job.additionalPlain,
@@ -124,31 +125,6 @@ class AnonymousSearch extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
-  //  indeed attempt #1 
-  // axios.get('https://api.ipify.org?format=json')
-  //   .then(res => {
-  //     console.log(navigator.userAgent);
-  //     const url = "https://api.indeed.com/ads/apisearch?publisher=unknown&q=" + this.state.technologyValue + "+" + this.state.positionValue + "&l=&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=&co"+ this.state.countryValue + "=&chnl=&userip=" + res.data.ip + "&useragent=&useragent=Mozilla/%2F4.0%28Firefox%29&v=2";
-  //     axios.post(url)
-  //       .then(res => {
-  //         console.log(res);
-  //         console.log(res.data);
-  //       });
-  //   });
-
-// indeed attempt #2
-  // const options = {
-  //   method: 'GET',
-  //   url: 'https://indeed-indeed.p.rapidapi.com/apigetjobs',
-  //   params: {publisher: 'unknown', format: 'json', v: '2', jobkeys: this.state.technologyValue + ', ' + this.state.countryValue + ', ' + this.state.positionValue},
-  //   headers: {'x-rapidapi-host': 'indeed-indeed.p.rapidapi.com'}
-  // };
-  // axios.request(options).then(function (response) {
-  //   console.log(response.data);
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
 
 // lever attempt
   axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=25&mode=json')
@@ -200,8 +176,9 @@ render() {
         <div className="button-container">
             <button onClick={this.handleSubmit} className="submit-button"> Submit</button>
         </div>
-        
+
     </div>
+
     );
   }
 }
