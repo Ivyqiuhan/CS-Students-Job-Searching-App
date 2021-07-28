@@ -74,12 +74,13 @@ class RegisteredSearch extends React.Component {
             locationValue: '',
             commitmentValue: '',
             viewQueries: false,
-            companySelected: false
+            companySelected: false,
+            allJobs: [],
+            filteredJobs: []
         };
 
         this.onChangeLocation = this.onChangeLocation.bind(this);
         this.onChangeCommitment = this.onChangeCommitment.bind(this);
-
     }
 
     onChangeCompany = (newCompany) => {
@@ -131,23 +132,34 @@ class RegisteredSearch extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-// lever attempt
+
+        // old code not synchronous
+
         axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=50&mode=json&location=' +
             this.state.locationValue
         )
             .then(res => {
                 console.log(res.data);
                 this.makeLeverAPIRequest(res.data);
+            })
+            .then(() => {
+                axios.get('http://localhost:8080/jobs')
+                    .then((response) => {
+                        this.setState({allJobs: response.data}, () => {
+                            console.log('new jobs', this.state.allJobs);
+                        });
+                        this.setState({viewQueries: true}, () => {
+                            console.log('setting viewQueries as true', this.state.viewQueries); // todo set this as true only after the filtering is completed
+                        });
+                    }).catch(error => console.error('Getting jobs error'));
             });
-
-        this.setState({viewQueries: true});
     }
 
     render() {
         return (
             <div className="anon-search-container">
                 {(this.state.viewQueries) ?
-                    <div className="jobs-search"><Jobs/></div> :
+                    <div className="jobs-search"><Jobs jobs = {this.state.allJobs}/></div> :
                     <div className="search-text">Search for jobs</div>}
 
                 <div className="all-queries">
