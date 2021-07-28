@@ -2,6 +2,7 @@ import "./AnonymousSearch.css";
 import React from "react";
 import axios from 'axios';
 import Dropdown from '../dropdown/Dropdown';
+import Jobs from "../jobs/Jobs";
 
 //testing
 
@@ -72,6 +73,7 @@ class AnonymousSearch extends React.Component {
       positionValue: '',
       technologyValue: '',
       companyValue: '',
+      viewQueries: false
     };
 
     this.onChangePosition = this.onChangePosition.bind(this);
@@ -132,51 +134,59 @@ class AnonymousSearch extends React.Component {
       console.log(res.data);
         this.makeLeverRequest(res.data);
     });
+
+    this.setState({ viewQueries: true});
 }
 
 
 render() {
     return (
-    <div className="all-queries">
-        <div className="dd-container">
-            <div className="container">
-                <Dropdown 
-                  title="Country" 
-                  items={countryItems}
-                  changeValue={this.onChangeCountry}/> 
-            </div>
-            <div className="dd-container">
-                <div className="container">
-                    <Dropdown 
-                      title="Position" 
-                      items={positionItems} 
-                      changeValue={this.onChangePosition}/> 
-                </div>
-            </div>
+      <div className="anon-search-container">
+        {(this.state.viewQueries) ? 
+          <div className="jobs-search"> <Jobs/> </div>: 
+          <div className="search-text">Search for jobs</div>}
+        
+        <div className="all-queries">
+          <div className="dd-container">
+              <div className="container">
+                  <Dropdown 
+                    title="Country" 
+                    items={countryItems}
+                    changeValue={this.onChangeCountry}/> 
+              </div>
+              <div className="dd-container">
+                  <div className="container">
+                      <Dropdown 
+                        title="Position" 
+                        items={positionItems} 
+                        changeValue={this.onChangePosition}/> 
+                  </div>
+              </div>
 
-            <div className="dd-container">
-                <div className="container">
-                    <Dropdown 
-                    title="Experience" 
-                    items={technologyItems} 
-                    changeValue={this.onChangeTechnology}/> 
-                </div>
-            </div>
+              <div className="dd-container">
+                  <div className="container">
+                      <Dropdown 
+                      title="Experience" 
+                      items={technologyItems} 
+                      changeValue={this.onChangeTechnology}/> 
+                  </div>
+              </div>
 
-            <div className="dd-container">
-                <div className="container">
-                    <Dropdown 
-                    title="Company" 
-                    items={companyItems} 
-                    changeValue={this.onChangeCompany}/> 
-                </div>
-            </div>
-        </div>
+              <div className="dd-container">
+                  <div className="container">
+                      <Dropdown 
+                      title="Company" 
+                      items={companyItems} 
+                      changeValue={this.onChangeCompany}/> 
+                  </div>
+              </div>
+          </div>
 
-        <div className="button-container">
-            <button onClick={this.handleSubmit} className="submit-button"> Submit</button>
-        </div>
-
+          <div className="button-container">
+              <button onClick={this.handleSubmit} className="submit-button"> Submit</button>
+          </div>
+          
+      </div>
     </div>
 
     );
