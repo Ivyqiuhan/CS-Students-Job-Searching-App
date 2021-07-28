@@ -116,7 +116,11 @@ class RegisteredSearch extends React.Component {
                 jobTitle: job.text,
                 company: this.state.companyValue,
                 url: job.applyUrl,
-                expired: null
+                expired: null,
+
+                //todo add these to JobConfig and test to make sure they're being sent
+                commitment: job.categories.commitment,
+                location: job.categories.location
             }
             axios.post('http://localhost:8080/jobs', data)
                 .catch(err => {
