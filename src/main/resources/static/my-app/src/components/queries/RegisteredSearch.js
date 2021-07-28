@@ -74,12 +74,12 @@ class RegisteredSearch extends React.Component {
             locationValue: '',
             commitmentValue: '',
             viewQueries: false,
-            companySelected: false
+            companySelected: false,
+            allJobs: []
         };
 
         this.onChangeLocation = this.onChangeLocation.bind(this);
         this.onChangeCommitment = this.onChangeCommitment.bind(this);
-
     }
 
     onChangeCompany = (newCompany) => {
@@ -87,6 +87,12 @@ class RegisteredSearch extends React.Component {
             companyValue: newCompany.value
         }, () => {
             console.log('new company', this.state.companyValue);
+        });
+
+        this.setState({
+            companySelected: true
+        }, () => {
+            console.log('new company', this.state.companySelected);
         });
     }
 
@@ -116,7 +122,11 @@ class RegisteredSearch extends React.Component {
                 jobTitle: job.text,
                 company: this.state.companyValue,
                 url: job.applyUrl,
-                expired: null
+                expired: null,
+
+                //todo add these to JobConfig and test to make sure they're being sent
+                commitment: job.categories.commitment,
+                location: job.categories.location
             }
             axios.post('http://localhost:8080/jobs', data)
                 .catch(err => {
@@ -127,23 +137,38 @@ class RegisteredSearch extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-// lever attempt
+
         axios.get('https://api.lever.co/v0/postings/' + this.state.companyValue + '?skip=0&limit=50&mode=json&location=' +
             this.state.locationValue
         )
             .then(res => {
                 console.log(res.data);
                 this.makeLeverAPIRequest(res.data);
+            })
+            .then(() => {
+                axios.get('http://localhost:8080/jobs')
+                    .then((response) => {
+                        this.setState({allJobs: response.data}, () => {
+                            console.log('new jobs', this.state.allJobs);
+                            this.setState({viewQueries: true}, () => {
+                                console.log('setting viewQueries as true', this.state.viewQueries);
+                            });
+                        });
+                    }).catch(error => console.error('Getting jobs error'));
             });
-
-        this.setState({viewQueries: true});
     }
 
     render() {
         return (
             <div className="anon-search-container">
                 {(this.state.viewQueries) ?
-                    <div className="jobs-search"><Jobs/></div> :
+                    <div className="jobs-search"><Jobs
+                                                    jobs = {this.state.allJobs}
+                                                    companyFilter = {this.state.companyValue}
+                                                    locationFilter = {this.state.locationValue}
+                                                    commitmentFilter = {this.state.commitmentValue}
+                                                />
+                    </div> :
                     <div className="search-text">Search for jobs</div>}
 
                 <div className="all-queries">
