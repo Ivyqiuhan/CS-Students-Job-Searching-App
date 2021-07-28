@@ -132,8 +132,8 @@ class AnonymousSearch extends React.Component {
                         <div className="container">
                             <Dropdown
                                 title="Location"
-                                items= {(this.state.companyValue == 'netflix') ? netflixLocationItems :
-                                    (this.state.companyValue == 'lever') ? leverLocationItems :
+                                items= {(this.state.companyValue === 'netflix') ? netflixLocationItems :
+                                    (this.state.companyValue === 'lever') ? leverLocationItems :
                                         [{id: 0, value: 'Select a company first'}]}
                                 changeValue={this.onChangeLocation}/>
                         </div>

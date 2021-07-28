@@ -8,7 +8,9 @@ import Jobs from "../jobs/Jobs";
 
 const companyItems = [
     {id: 0, value: 'netflix'},
-    {id: 1, value: 'lever'}
+    {id: 1, value: 'lever'},
+    {id: 2, value: 'github'},
+    {id: 3, value: 'samsung'},
 ]
 
 const leverLocationItems = [
@@ -157,8 +159,8 @@ class RegisteredSearch extends React.Component {
                         <div className="container">
                             <Dropdown
                                 title="Location"
-                                items= {(this.state.companyValue == 'netflix') ? netflixLocationItems :
-                                    (this.state.companyValue == 'lever') ? leverLocationItems :
+                                items= {(this.state.companyValue === 'netflix') ? netflixLocationItems :
+                                    (this.state.companyValue === 'lever') ? leverLocationItems :
                                         [{id: 0, value: 'Select a company first'}]}
                                 changeValue={this.onChangeLocation}/>
                         </div>
@@ -167,8 +169,8 @@ class RegisteredSearch extends React.Component {
                         <div className="container">
                             <Dropdown
                                 title="Commitment"
-                                items= {(this.state.companyValue == 'netflix') ? netflixCommitmentItems :
-                                    (this.state.companyValue == 'lever') ? leverCommitmentItems :
+                                items= {(this.state.companyValue === 'netflix') ? netflixCommitmentItems :
+                                    (this.state.companyValue === 'lever') ? leverCommitmentItems :
                                         [{id: 0, value: 'Select a company first'}]}
                                 changeValue={this.onChangeCommitment}/>
                         </div>

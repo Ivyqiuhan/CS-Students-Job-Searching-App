@@ -15,14 +15,23 @@ export default class Login extends Component {
 
     handleClick(event) {
         //axios stuff i think....
+        console.log("handling Click");
     }
 
-    handleUsername(e) {
-        this.setState({username: e.target.value});
+    onChangeUsername= (event) => {
+        this.setState({
+            username: event.target.value
+        }, () => {
+            console.log('new username', this.state.username);
+        });
     }
 
-    handlePassword(e) {
-        this.setState({password: e.target.value})
+    onChangePassword= (event) => {
+        this.setState({
+            password: event.target.value
+        }, () => {
+            console.log('new password', this.state.password);
+        });
     }
 
     render() {
@@ -34,14 +43,14 @@ export default class Login extends Component {
                     <input
                         type="text"
                         name="username"
-                        onChange={this.handleUsername}
+                        onChange={this.onChangeUsername}
                     /><br/>
 
                     <label for="password"> Password: </label><br/>
                         <input
                         type="text"
                         name="password"
-                        onChange={this.handlePassword}
+                        onChange={this.onChangePassword}
                     /><br/>
                 </div>
 
