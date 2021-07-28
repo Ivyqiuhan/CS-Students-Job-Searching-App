@@ -105,14 +105,14 @@ export default class Register extends Component {
                             name="name"
                             onChange={this.onChangeName}
                         /><br/>
-                        <label for="username"> Username: </label><br/>
+                        <label htmlFor="username"> Username: </label><br/>
                         <input
                             type="text"
                             name="username"
                             onChange={this.onChangeUsername}
                         /><br/>
 
-                        <label for="email"> Email: </label><br/>
+                        <label htmlFor="email"> Email: </label><br/>
                         <input
                             type="text"
                             name="email"
@@ -131,13 +131,13 @@ export default class Register extends Component {
                             onChange={this.onChangeUserLocation}
                         /><br/>
 
-                        <label for="password"> Password: </label><br/>
+                        <label htmlFor="password"> Password: </label><br/>
                             <input
                             type="text"
                             name="password"
                             onChange={this.onChangePassword}
                         /><br/>
-                        <label for="password"> Confirm password: </label><br/>
+                        <label htmlFor="password"> Confirm password: </label><br/>
                             <input
                             type="text"
                             name="password2"
