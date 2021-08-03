@@ -14,7 +14,6 @@ export default class Login extends Component {
     }
 
     handleClick(event) {
-        //axios stuff i think....
         console.log("handling Click");
     }
 
@@ -36,13 +35,17 @@ export default class Login extends Component {
 
     render() {
         return(
-            <div className="login-container">
+            <div>
+                <div className="login-text"> Login</div>
+                <div className="login-container">
+                
                 <form>
                 <div className="form-container">
                     <label for="username"> Username: </label><br/>
                     <input
                         type="text"
                         name="username"
+                        className="input-box"
                         onChange={this.onChangeUsername}
                     /><br/>
 
@@ -50,6 +53,7 @@ export default class Login extends Component {
                         <input
                         type="text"
                         name="password"
+                        className="input-box"
                         onChange={this.onChangePassword}
                     /><br/>
                 </div>
@@ -60,11 +64,14 @@ export default class Login extends Component {
                         </div>
 
                         <div className="login-btn-container">
-                            <button type="login-button" className="login-button" onClick={this.handleClick}>Login</button> 
+                            <button type="login-button" className="login-button" onClick={this.handleClick}>
+                            <div className="right-arrow"></div></button> 
                         </div> 
                     </div>
                 </form>
             </div>
+            </div>
+            
         );
     }
 }
