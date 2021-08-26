@@ -16,7 +16,6 @@ public class JobConfig {
     CommandLineRunner commandLineRunner(JobRepository jobRepository) {
         return args -> {
             Job javaJob = new Job(
-                    //TODO: Job fromat
                     (long) 1,
                     "indeed",
                     "1",

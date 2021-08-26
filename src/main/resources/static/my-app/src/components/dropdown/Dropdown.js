@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import "./Dropdown.css";
 
-//function Dropdown ({ title, items = [], multiSelect = false }) {
 function Dropdown (props) {
     const [open, setOpen] = useState(false);
     const [selection, setSelection] = useState([]);

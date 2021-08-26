@@ -1,14 +1,12 @@
 import "./Homepage.css";
 import React from "react";
+import RegisteredSearch from './queries/RegisteredSearch';
 import AnonymousSearch from './queries/AnonymousSearch';
-import Jobs from "./jobs/Jobs";
 
 const Home = () => {
   return (
     <div className="Homepage">
       <AnonymousSearch />
-      <Jobs />
-      
     </div>
   );
 }
