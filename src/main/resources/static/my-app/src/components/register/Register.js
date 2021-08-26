@@ -96,19 +96,23 @@ export default class Register extends Component {
 
     render() {
         return(
-            <div className="register-container">
+            <div>
+                <div className="register-text"> Register</div>
+                <div className="register-container">
                 <form>
                     <div className="form-container">
                         <label htmlFor="name"> First & Last Name: </label><br/>
                         <input
                             type="text"
                             name="name"
+                            className="input-box"
                             onChange={this.onChangeName}
                         /><br/>
                         <label htmlFor="username"> Username: </label><br/>
                         <input
                             type="text"
                             name="username"
+                            className="input-box"
                             onChange={this.onChangeUsername}
                         /><br/>
 
@@ -116,18 +120,21 @@ export default class Register extends Component {
                         <input
                             type="text"
                             name="email"
+                            className="input-box"
                             onChange={this.onChangeEmail}
                         /><br/>
                         <label htmlFor="phone"> Phone Number: </label><br/>
                         <input
                             type="text"
                             name="phone"
+                            className="input-box"
                             onChange={this.onChangePhoneNumber}
                         /><br/>
                         <label htmlFor="location"> Location: </label><br/>
                         <input
                             type="text"
                             name="location"
+                            className="input-box"
                             onChange={this.onChangeUserLocation}
                         /><br/>
 
@@ -135,22 +142,28 @@ export default class Register extends Component {
                             <input
                             type="text"
                             name="password"
+                            className="input-box"
                             onChange={this.onChangePassword}
                         /><br/>
                         <label htmlFor="password"> Confirm password: </label><br/>
                             <input
                             type="text"
                             name="password2"
+                            className="input-box"
                             onChange={this.onChangeConfirmPassword}
                         /><br/>
                     </div>
                     
                     <div className="btn-container">
-                       <button type="signup-button" className="signup-button" onClick={this.handleClick}>Sign-up</button>
+                       <button type="signup-button" className="signup-button" onClick={this.handleClick}>
+                       <div className="register-arrow"></div>
+                       </button>
                     </div>
                     
                 </form>
             </div>
+            </div>
+            
         );
     }
 }
